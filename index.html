@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILM Analytics Ltd. — Business Intelligence &amp; Automation for Okanagan Businesses</title>
+<meta name="description" content="ILM Analytics helps Kelowna and Okanagan retailers and manufacturers increase profitability through dashboards, automation, and data-driven decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16211C;
+    --ink-soft:#22312A;
+    --paper:#F3EFE4;
+    --paper-soft:#EAE4D4;
+    --gold:#C88A3B;
+    --gold-bright:#DDA24D;
+    --teal:#1F6F5C;
+    --slate:#5B6B63;
+    --line-on-ink: rgba(243,239,228,0.14);
+    --line-on-paper: rgba(22,33,28,0.12);
+    --display: 'Space Grotesk', 'Segoe UI', sans-serif;
+    --body: 'Inter', 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold-bright);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--gold-bright); display:inline-block;}
+  .eyebrow.on-paper{color:var(--teal);}
+  .eyebrow.on-paper::before{background:var(--teal);}
+
+  h1,h2,h3{font-family:var(--display); font-weight:600; letter-spacing:-0.01em; color:inherit;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(22,33,28,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-on-ink);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; max-width:1120px; margin:0 auto;
+  }
+  .brand{
+    font-family:var(--display); font-weight:700; font-size:18px;
+    color:var(--paper); letter-spacing:-0.01em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand .mark{
+    width:10px; height:10px; background:var(--gold);
+    display:inline-block; transform:rotate(45deg);
+  }
+  .navlinks{display:flex; gap:32px; align-items:center;}
+  .navlinks a{
+    color:var(--paper); opacity:0.75; text-decoration:none;
+    font-size:14.5px; font-weight:500;
+    transition:opacity .2s;
+  }
+  .navlinks a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--gold); color:var(--ink) !important; opacity:1 !important;
+    padding:9px 18px; border-radius:3px; font-weight:600; font-size:14px;
+  }
+  .nav-cta:hover{background:var(--gold-bright);}
+  .navlinks .nav-cta{display:inline-block;}
+  @media (max-width:760px){
+    .navlinks a:not(.nav-cta){display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink); color:var(--paper);
+    position:relative; overflow:hidden;
+    padding:96px 0 110px;
+  }
+  .hero::before{
+    /* faint topographic contour lines, nod to Okanagan lake/hills */
+    content:"";
+    position:absolute; inset:0;
+    opacity:0.5;
+    background-image:
+      repeating-radial-gradient(ellipse 120% 90% at 15% 100%, transparent 0, transparent 38px, var(--line-on-ink) 39px, var(--line-on-ink) 40px);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .hero h1{
+    font-size:clamp(34px, 4.6vw, 54px);
+    line-height:1.06;
+    margin-bottom:22px;
+  }
+  .hero h1 .accent{color:var(--gold-bright);}
+  .hero p.lede{
+    font-size:18px; color:rgba(243,239,228,0.78);
+    max-width:480px; margin-bottom:34px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--body); font-weight:600; font-size:15px;
+    padding:13px 24px; border-radius:3px; text-decoration:none;
+    cursor:pointer; border:1px solid transparent;
+    transition:all .2s;
+  }
+  .btn-primary{background:var(--gold); color:var(--ink);}
+  .btn-primary:hover{background:var(--gold-bright); transform:translateY(-1px);}
+  .btn-ghost{border-color:var(--line-on-ink); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--paper);}
+  .btn-teal{background:var(--teal); color:var(--paper);}
+  .btn-teal:hover{background:#25846e;}
+
+  /* mini live dashboard mockup — signature element */
+  .dash{
+    background:var(--ink-soft); border:1px solid var(--line-on-ink);
+    border-radius:6px; padding:22px; position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+  }
+  .dash-head{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--line-on-ink);
+  }
+  .dash-head .dots{display:flex; gap:6px;}
+  .dash-head .dots span{width:8px; height:8px; border-radius:50%; background:var(--line-on-ink);}
+  .dash-head .label{font-family:var(--mono); font-size:11.5px; color:var(--slate); letter-spacing:0.06em;}
+  .dash-kpis{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:18px;}
+  .kpi{background:var(--ink); border:1px solid var(--line-on-ink); border-radius:4px; padding:12px 10px;}
+  .kpi .kpi-label{font-family:var(--mono); font-size:10.5px; color:var(--slate); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px;}
+  .kpi .kpi-value{font-family:var(--mono); font-size:19px; font-weight:600; color:var(--paper);}
+  .kpi .kpi-value.pos::after{content:" ▲"; color:var(--teal); font-size:12px;}
+  .dash-chart{background:var(--ink); border:1px solid var(--line-on-ink); border-radius:4px; padding:14px; height:150px;}
+  .dash-chart svg{width:100%; height:100%;}
+  .chart-line{
+    fill:none; stroke:var(--gold-bright); stroke-width:2.5;
+    stroke-dasharray:400; stroke-dashoffset:400;
+    animation:draw 1.8s ease-out forwards .3s;
+  }
+  .chart-fill{ opacity:0; animation:fadein 1s ease-out forwards 1.4s; }
+  @keyframes draw{ to{stroke-dashoffset:0;} }
+  @keyframes fadein{ to{opacity:1;} }
+  @media (prefers-reduced-motion:reduce){
+    .chart-line{stroke-dashoffset:0; animation:none;}
+    .chart-fill{opacity:1; animation:none;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:620px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3vw,36px); margin-bottom:14px;}
+  .section-head p{color:var(--slate); font-size:16.5px;}
+  .on-ink{background:var(--ink); color:var(--paper);}
+  .on-ink .section-head p{color:rgba(243,239,228,0.7);}
+
+  /* ---------- PROBLEMS (ledger before/after) ---------- */
+  .ledger{
+    border:1px solid var(--line-on-paper); border-radius:6px; overflow:hidden;
+    background:#fff;
+  }
+  .ledger-row{
+    display:grid; grid-template-columns:1fr 1fr;
+    border-bottom:1px solid var(--line-on-paper);
+  }
+  .ledger-row:last-child{border-bottom:none;}
+  .ledger-row > div{padding:18px 24px; font-size:15.5px;}
+  .ledger-row .before{color:var(--slate); text-decoration:line-through; text-decoration-color:rgba(91,107,99,0.5);}
+  .ledger-row .after{color:var(--ink); font-weight:500; border-left:1px solid var(--line-on-paper); display:flex; align-items:center; gap:10px;}
+  .ledger-row .after::before{content:"✓"; color:var(--teal); font-weight:700;}
+  .ledger-labels{display:grid; grid-template-columns:1fr 1fr; font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); padding:0 24px; margin-bottom:8px;}
+  .ledger-labels span:last-child{padding-left:25px;}
+
+  /* ---------- SERVICES ---------- */
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-on-ink); border:1px solid var(--line-on-ink); border-radius:6px; overflow:hidden;}
+  @media (max-width:760px){ .pillars{grid-template-columns:1fr;} }
+  .pillar{background:var(--ink-soft); padding:32px 26px;}
+  .pillar .num{font-family:var(--mono); font-size:12px; color:var(--gold-bright); margin-bottom:16px; letter-spacing:0.08em;}
+  .pillar h3{font-size:20px; margin-bottom:14px; color:var(--paper);}
+  .pillar ul{list-style:none;}
+  .pillar li{
+    font-size:14.5px; color:rgba(243,239,228,0.72); padding:7px 0 7px 18px;
+    position:relative; border-top:1px solid var(--line-on-ink);
+  }
+  .pillar li:first-of-type{border-top:none;}
+  .pillar li::before{content:"–"; position:absolute; left:0; color:var(--teal);}
+
+  /* ---------- DASHBOARD EXAMPLE (big) ---------- */
+  .bigdash{
+    background:#fff; border:1px solid var(--line-on-paper); border-radius:8px;
+    padding:28px; box-shadow:0 20px 50px -30px rgba(22,33,28,0.25);
+  }
+  .bigdash-grid{display:grid; grid-template-columns:2fr 1fr; gap:20px;}
+  @media (max-width:760px){ .bigdash-grid{grid-template-columns:1fr;} }
+  .bigdash-panel{border:1px solid var(--line-on-paper); border-radius:6px; padding:18px;}
+  .bigdash-panel h4{font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--slate); margin-bottom:14px;}
+  .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+  .bar-row .bar-label{font-size:13px; width:92px; flex-shrink:0; color:var(--ink);}
+  .bar-track{flex:1; height:9px; background:var(--paper-soft); border-radius:2px; overflow:hidden;}
+  .bar-fill{height:100%; background:var(--teal); border-radius:2px;}
+  .stat-mini{display:flex; justify-content:space-between; align-items:baseline; padding:9px 0; border-top:1px solid var(--line-on-paper);}
+  .stat-mini:first-child{border-top:none;}
+  .stat-mini .l{font-size:13.5px; color:var(--slate);}
+  .stat-mini .v{font-family:var(--mono); font-weight:600; font-size:15px;}
+
+  /* ---------- AUTOMATION FLOW ---------- */
+  .flow{display:flex; flex-direction:column; align-items:stretch; max-width:520px;}
+  .flow-step{
+    display:flex; align-items:center; gap:16px;
+    background:var(--ink-soft); border:1px solid var(--line-on-ink);
+    border-radius:6px; padding:16px 20px; color:var(--paper);
+  }
+  .flow-step .fnum{font-family:var(--mono); color:var(--gold-bright); font-size:13px; width:20px;}
+  .flow-connector{
+    width:1px; height:26px; background:var(--line-on-ink); margin-left:37px;
+    position:relative;
+  }
+  .flow-connector::after{
+    content:"↓"; position:absolute; left:-6px; top:6px; color:var(--slate); font-size:13px;
+  }
+  .flow-note{font-family:var(--mono); font-size:12.5px; color:var(--gold-bright); margin-top:20px;}
+
+  /* ---------- IMPACT STATS ---------- */
+  .stats{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line-on-paper); border:1px solid var(--line-on-paper); border-radius:6px; overflow:hidden;}
+  @media (max-width:900px){ .stats{grid-template-columns:repeat(2,1fr);} }
+  .stat{background:#fff; padding:26px 18px;}
+  .stat .v{font-family:var(--mono); font-size:26px; font-weight:600; color:var(--teal); margin-bottom:8px;}
+  .stat .l{font-size:13px; color:var(--slate); line-height:1.4;}
+
+  /* ---------- PROCESS ---------- */
+  .process{display:grid; grid-template-columns:repeat(5,1fr); gap:20px;}
+  @media (max-width:900px){ .process{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .process{grid-template-columns:1fr;} }
+  .proc-step .pn{font-family:var(--mono); font-size:22px; color:var(--gold); font-weight:600; margin-bottom:10px;}
+  .proc-step h4{font-size:15.5px; margin-bottom:6px; font-family:var(--body); font-weight:600;}
+  .proc-step p{font-size:13.5px; color:var(--slate);}
+
+  /* ---------- PRICING ---------- */
+  .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:860px){ .pricing{grid-template-columns:1fr;} }
+  .price-card{
+    border:1px solid var(--line-on-paper); border-radius:8px; padding:30px 26px;
+    background:#fff; display:flex; flex-direction:column;
+  }
+  .price-card.featured{
+    border-color:var(--gold); box-shadow:0 20px 40px -25px rgba(200,138,59,0.5);
+    position:relative;
+  }
+  .price-card.featured::before{
+    content:"MOST POPULAR"; font-family:var(--mono); font-size:10px; letter-spacing:0.1em;
+    background:var(--gold); color:var(--ink); padding:4px 10px; border-radius:2px;
+    position:absolute; top:-11px; left:26px;
+  }
+  .price-card h3{font-size:18px; margin-bottom:6px;}
+  .price-card .scope{font-size:13.5px; color:var(--slate); margin-bottom:20px;}
+  .price-card .price{font-family:var(--mono); font-size:30px; font-weight:600; margin-bottom:22px;}
+  .price-card .price span{font-size:14px; color:var(--slate); font-weight:400;}
+  .price-card ul{list-style:none; margin-bottom:26px; flex:1;}
+  .price-card li{font-size:14px; padding:6px 0 6px 20px; position:relative; color:var(--ink);}
+  .price-card li::before{content:"✓"; color:var(--teal); position:absolute; left:0;}
+
+  /* ---------- WHY US ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:24px;}
+  @media (max-width:900px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .why-grid{grid-template-columns:1fr;} }
+  .why-item{padding-top:16px; border-top:2px solid var(--teal);}
+  .why-item p{font-size:14.5px; color:var(--ink); font-weight:500;}
+
+  /* ---------- CTA / CONTACT ---------- */
+  .contact{background:var(--ink); color:var(--paper);}
+  .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact h2{font-size:clamp(26px,3vw,36px); margin-bottom:16px;}
+  .contact p.lede{color:rgba(243,239,228,0.72); font-size:16px; margin-bottom:26px; max-width:420px;}
+  .contact-facts{list-style:none; font-family:var(--mono); font-size:13px; color:rgba(243,239,228,0.6);}
+  .contact-facts li{padding:8px 0; border-top:1px solid var(--line-on-ink);}
+  .contact-facts li:first-child{border-top:none;}
+
+  form{background:var(--ink-soft); border:1px solid var(--line-on-ink); border-radius:8px; padding:28px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block; font-size:13px; margin-bottom:7px; color:rgba(243,239,228,0.75); font-weight:500;}
+  .field input, .field select, .field textarea{
+    width:100%; background:var(--ink); border:1px solid var(--line-on-ink);
+    border-radius:4px; padding:11px 13px; color:var(--paper); font-family:var(--body); font-size:14.5px;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--gold-bright); outline-offset:1px; border-color:var(--gold-bright);
+  }
+  .field textarea{resize:vertical; min-height:90px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:480px){ .field-row{grid-template-columns:1fr;} }
+  .form-note{font-size:12.5px; color:var(--slate); margin-top:14px;}
+  #formStatus{font-size:14px; margin-top:14px; display:none;}
+  #formStatus.show{display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); border-top:1px solid var(--line-on-ink); padding:34px 0; color:rgba(243,239,228,0.55);}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:13px;}
+  .footer-row .brand{font-size:15px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand"><span class="mark"></span>ILM Analytics</div>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="nav-cta">Book free assessment</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Kelowna &amp; Okanagan · BI &amp; Automation</div>
+      <h1>Your business has <span class="accent">more data</span> than you think.</h1>
+      <p class="lede">ILM Analytics helps Okanagan retailers and manufacturers increase profitability through business intelligence, automation, and data-driven decision making — no data team required.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Book your free assessment</a>
+        <a href="#services" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+    <div class="dash" role="img" aria-label="Sample live dashboard showing revenue trend and KPIs">
+      <div class="dash-head">
+        <span class="label">REVENUE_OVERVIEW.LIVE</span>
+        <div class="dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="dash-kpis">
+        <div class="kpi"><div class="kpi-label">Revenue</div><div class="kpi-value pos">$84.2k</div></div>
+        <div class="kpi"><div class="kpi-label">Margin</div><div class="kpi-value pos">31.4%</div></div>
+        <div class="kpi"><div class="kpi-label">Lead resp.</div><div class="kpi-value pos">4 min</div></div>
+      </div>
+      <div class="dash-chart">
+        <svg viewBox="0 0 300 100" preserveAspectRatio="none">
+          <polyline class="chart-fill" points="0,90 40,78 80,82 120,60 160,64 200,40 240,44 300,18 300,100 0,100" fill="rgba(31,111,92,0.25)"/>
+          <polyline class="chart-line" points="0,90 40,78 80,82 120,60 160,64 200,40 240,44 300,18" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problems">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow on-paper">Common challenges</div>
+      <h2>The way most SMBs run reporting today</h2>
+      <p>None of this is a people problem. It's a systems problem — and it's fixable in weeks, not quarters.</p>
+    </div>
+    <div class="ledger-labels"><span>Today</span><span>With ILM Analytics</span></div>
+    <div class="ledger">
+      <div class="ledger-row"><div class="before">Reports take hours to prepare</div><div class="after">Live dashboards, always current</div></div>
+      <div class="ledger-row"><div class="before">No real-time visibility into KPIs</div><div class="after">KPIs updated automatically</div></div>
+      <div class="ledger-row"><div class="before">Leads are missed or followed up late</div><div class="after">Automatic lead response &amp; qualification</div></div>
+      <div class="ledger-row"><div class="before">Staff spend time on repetitive tasks</div><div class="after">Reporting &amp; follow-up on autopilot</div></div>
+      <div class="ledger-row"><div class="before">Decisions rely on gut instinct</div><div class="after">Decisions backed by real numbers</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="on-ink">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How we help</div>
+      <h2>Three ways we plug into your business</h2>
+      <p>Pick one to start, or combine all three as your systems mature.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">01 / BI</div>
+        <h3>Business Intelligence</h3>
+        <ul>
+          <li>KPI dashboards</li>
+          <li>Sales reporting</li>
+          <li>Financial reporting</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="num">02 / AUTO</div>
+        <h3>Automation</h3>
+        <ul>
+          <li>Lead management</li>
+          <li>Customer follow-up</li>
+          <li>Reporting automation</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="num">03 / GROWTH</div>
+        <h3>Growth Systems</h3>
+        <ul>
+          <li>Lead generation</li>
+          <li>Performance tracking</li>
+          <li>Forecasting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard-example">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow on-paper">What you actually get</div>
+      <h2>An example dashboard, built around your numbers</h2>
+      <p>Every metric below updates on its own — no more Friday-afternoon spreadsheet exports.</p>
+    </div>
+    <div class="bigdash">
+      <div class="bigdash-grid">
+        <div class="bigdash-panel">
+          <h4>Top products by revenue</h4>
+          <div class="bar-row"><span class="bar-label">Product A</span><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+          <div class="bar-row"><span class="bar-label">Product B</span><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div></div>
+          <div class="bar-row"><span class="bar-label">Product C</span><div class="bar-track"><div class="bar-fill" style="width:47%"></div></div></div>
+          <div class="bar-row"><span class="bar-label">Product D</span><div class="bar-track"><div class="bar-fill" style="width:31%"></div></div></div>
+        </div>
+        <div class="bigdash-panel">
+          <h4>Operational KPIs</h4>
+          <div class="stat-mini"><span class="l">Revenue trend</span><span class="v">↑ 12.4%</span></div>
+          <div class="stat-mini"><span class="l">Customer acquisition</span><span class="v">42 / mo</span></div>
+          <div class="stat-mini"><span class="l">Profitability</span><span class="v">31.4%</span></div>
+          <div class="stat-mini"><span class="l">Updated</span><span class="v">Automatically</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="automation" class="on-ink">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Example automation</div>
+      <h2>What happens when a lead comes in</h2>
+      <p>No manual work required — from first contact to a booked appointment.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step"><span class="fnum">01</span>Lead arrives online</div>
+      <div class="flow-connector"></div>
+      <div class="flow-step"><span class="fnum">02</span>Automatic email response</div>
+      <div class="flow-connector"></div>
+      <div class="flow-step"><span class="fnum">03</span>Automatic qualification</div>
+      <div class="flow-connector"></div>
+      <div class="flow-step"><span class="fnum">04</span>Appointment booking</div>
+      <div class="flow-connector"></div>
+      <div class="flow-step"><span class="fnum">05</span>Management notification</div>
+    </div>
+    <div class="flow-note">// no manual work required</div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow on-paper">Business impact</div>
+      <h2>What changes once this is running</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">−80%</div><div class="l">reporting time</div></div>
+      <div class="stat"><div class="v">↑</div><div class="l">lead response speed</div></div>
+      <div class="stat"><div class="v">100%</div><div class="l">profitability visibility</div></div>
+      <div class="stat"><div class="v">0</div><div class="l">repetitive admin tasks</div></div>
+      <div class="stat"><div class="v">↑</div><div class="l">decision confidence</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow on-paper">Our process</div>
+      <h2>From first call to ongoing support</h2>
+    </div>
+    <div class="process">
+      <div class="proc-step"><div class="pn">01</div><h4>Discovery Call</h4><p>We learn how your business runs today.</p></div>
+      <div class="proc-step"><div class="pn">02</div><h4>Data Assessment</h4><p>We map what data you already have.</p></div>
+      <div class="proc-step"><div class="pn">03</div><h4>Solution Design</h4><p>We design the dashboard or automation.</p></div>
+      <div class="proc-step"><div class="pn">04</div><h4>Implementation</h4><p>We build and connect it to your systems.</p></div>
+      <div class="proc-step"><div class="pn">05</div><h4>Ongoing Support</h4><p>We keep it running and evolve it with you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow on-paper">Investment</div>
+      <h2>Straightforward packages</h2>
+      <p>Every engagement starts with a free assessment, so you know the scope before you commit.</p>
+    </div>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="scope">Dashboard Setup</div>
+        <div class="price">$499<span>+</span></div>
+        <ul>
+          <li>KPI dashboard build</li>
+          <li>Connected to your existing data</li>
+          <li>One core report automated</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="border-color:var(--line-on-paper); color:var(--ink);">Get started</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Growth</h3>
+        <div class="scope">Dashboard + Automation</div>
+        <div class="price">$999<span>+</span></div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Lead &amp; follow-up automation</li>
+          <li>Reporting fully automated</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Get started</a>
+      </div>
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <div class="scope">Custom Solutions</div>
+        <div class="price">Custom</div>
+        <ul>
+          <li>Multi-location or multi-system setups</li>
+          <li>Forecasting &amp; growth systems</li>
+          <li>Dedicated ongoing support</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="border-color:var(--line-on-paper); color:var(--ink);">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why-us" class="on-ink">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why work with us</div>
+      <h2>Built for Okanagan businesses, not enterprise IT</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><p>Business-focused solutions</p></div>
+      <div class="why-item"><p>Clear ROI</p></div>
+      <div class="why-item"><p>Local BC market understanding</p></div>
+      <div class="why-item"><p>Fast implementation</p></div>
+      <div class="why-item"><p>Ongoing support</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Next steps</div>
+      <h2>Book a complimentary assessment</h2>
+      <p class="lede">30 minutes. We'll identify hidden reporting and automation opportunities in your business — no obligation.</p>
+      <ul class="contact-facts">
+        <li>Serving Kelowna &amp; the Okanagan</li>
+        <li>Response within 1 business day</li>
+        <li>No cost, no obligation</li>
+      </ul>
+    </div>
+    <form id="assessmentForm">
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="business">Business name</label>
+          <input type="text" id="business" name="business" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+      </div>
+      <div class="field">
+        <label for="type">What best describes your business?</label>
+        <select id="type" name="type">
+          <option>Retail</option>
+          <option>Manufacturing</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">What's your biggest reporting or automation headache right now?</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+      <button type="submit" class="btn btn-teal" style="width:100%; justify-content:center;">Request my free assessment</button>
+      <div id="formStatus"></div>
+      <p class="form-note">This form isn't wired to a backend yet — see the setup notes to connect it in a few minutes.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="brand">ILM Analytics Ltd.</div>
+    <div>Kelowna, BC · Business Intelligence &amp; Automation Consulting</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('assessmentForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var status = document.getElementById('formStatus');
+    status.textContent = "Thanks — this demo form isn't connected yet. See deployment notes to wire it up (Formspree takes about 5 minutes).";
+    status.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
