@@ -3,26 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ILM Analytics Ltd. — Business Intelligence &amp; Automation for Okanagan Businesses</title>
+<title>ILM Analytics Ltd.: Business Intelligence &amp; Automation for Okanagan Businesses</title>
 <meta name="description" content="ILM Analytics helps Kelowna and Okanagan retailers and manufacturers increase profitability through dashboards, automation, and data-driven decisions.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#16211C;
-    --ink-soft:#22312A;
-    --paper:#F3EFE4;
-    --paper-soft:#EAE4D4;
-    --gold:#C88A3B;
-    --gold-bright:#DDA24D;
-    --teal:#1F6F5C;
-    --slate:#5B6B63;
-    --line-on-ink: rgba(243,239,228,0.14);
-    --line-on-paper: rgba(22,33,28,0.12);
-    --display: 'Space Grotesk', 'Segoe UI', sans-serif;
-    --body: 'Inter', 'Segoe UI', sans-serif;
-    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    --ink:#0A2647;
+    --ink-soft:#123A66;
+    --paper:#FFFFFF;
+    --paper-soft:#E9F1FB;
+    --gold:#1D5FD6;
+    --gold-bright:#3B78E8;
+    --teal:#0F3D91;
+    --slate:#4C6C8C;
+    --line-on-ink: rgba(255,255,255,0.16);
+    --line-on-paper: rgba(10,38,71,0.14);
+    --display: 'Times New Roman', Times, serif;
+    --body: 'Times New Roman', Times, serif;
+    --mono: 'Times New Roman', Times, serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -58,7 +55,7 @@
   /* ---------- NAV ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(22,33,28,0.92);
+    background:rgba(10,38,71,0.92);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line-on-ink);
   }
@@ -120,7 +117,7 @@
   }
   .hero h1 .accent{color:var(--gold-bright);}
   .hero p.lede{
-    font-size:18px; color:rgba(243,239,228,0.78);
+    font-size:18px; color:rgba(255,255,255,0.80);
     max-width:480px; margin-bottom:34px;
   }
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
@@ -136,9 +133,9 @@
   .btn-ghost{border-color:var(--line-on-ink); color:var(--paper);}
   .btn-ghost:hover{border-color:var(--paper);}
   .btn-teal{background:var(--teal); color:var(--paper);}
-  .btn-teal:hover{background:#25846e;}
+  .btn-teal:hover{background:#0A2647;}
 
-  /* mini live dashboard mockup — signature element */
+  /* mini live dashboard mockup: signature element */
   .dash{
     background:var(--ink-soft); border:1px solid var(--line-on-ink);
     border-radius:6px; padding:22px; position:relative;
@@ -177,7 +174,7 @@
   .section-head h2{font-size:clamp(26px,3vw,36px); margin-bottom:14px;}
   .section-head p{color:var(--slate); font-size:16.5px;}
   .on-ink{background:var(--ink); color:var(--paper);}
-  .on-ink .section-head p{color:rgba(243,239,228,0.7);}
+  .on-ink .section-head p{color:rgba(255,255,255,0.72);}
 
   /* ---------- PROBLEMS (ledger before/after) ---------- */
   .ledger{
@@ -204,16 +201,16 @@
   .pillar h3{font-size:20px; margin-bottom:14px; color:var(--paper);}
   .pillar ul{list-style:none;}
   .pillar li{
-    font-size:14.5px; color:rgba(243,239,228,0.72); padding:7px 0 7px 18px;
+    font-size:14.5px; color:rgba(255,255,255,0.72); padding:7px 0 7px 18px;
     position:relative; border-top:1px solid var(--line-on-ink);
   }
   .pillar li:first-of-type{border-top:none;}
-  .pillar li::before{content:"–"; position:absolute; left:0; color:var(--teal);}
+  .pillar li::before{content:"\2022"; position:absolute; left:0; color:var(--teal);}
 
   /* ---------- DASHBOARD EXAMPLE (big) ---------- */
   .bigdash{
     background:#fff; border:1px solid var(--line-on-paper); border-radius:8px;
-    padding:28px; box-shadow:0 20px 50px -30px rgba(22,33,28,0.25);
+    padding:28px; box-shadow:0 20px 50px -30px rgba(10,38,71,0.18);
   }
   .bigdash-grid{display:grid; grid-template-columns:2fr 1fr; gap:20px;}
   @media (max-width:760px){ .bigdash-grid{grid-template-columns:1fr;} }
@@ -278,7 +275,6 @@
   }
   .price-card h3{font-size:18px; margin-bottom:6px;}
   .price-card .scope{font-size:13.5px; color:var(--slate); margin-bottom:20px;}
-  .price-card .price{font-family:var(--mono); font-size:30px; font-weight:600; margin-bottom:22px;}
   .price-card .price span{font-size:14px; color:var(--slate); font-weight:400;}
   .price-card ul{list-style:none; margin-bottom:26px; flex:1;}
   .price-card li{font-size:14px; padding:6px 0 6px 20px; position:relative; color:var(--ink);}
@@ -296,14 +292,14 @@
   .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;}
   @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
   .contact h2{font-size:clamp(26px,3vw,36px); margin-bottom:16px;}
-  .contact p.lede{color:rgba(243,239,228,0.72); font-size:16px; margin-bottom:26px; max-width:420px;}
+  .contact p.lede{color:rgba(255,255,255,0.72); font-size:16px; margin-bottom:26px; max-width:420px;}
   .contact-facts{list-style:none; font-family:var(--mono); font-size:13px; color:rgba(243,239,228,0.6);}
   .contact-facts li{padding:8px 0; border-top:1px solid var(--line-on-ink);}
   .contact-facts li:first-child{border-top:none;}
 
   form{background:var(--ink-soft); border:1px solid var(--line-on-ink); border-radius:8px; padding:28px;}
   .field{margin-bottom:16px;}
-  .field label{display:block; font-size:13px; margin-bottom:7px; color:rgba(243,239,228,0.75); font-weight:500;}
+  .field label{display:block; font-size:13px; margin-bottom:7px; color:rgba(255,255,255,0.75); font-weight:500;}
   .field input, .field select, .field textarea{
     width:100%; background:var(--ink); border:1px solid var(--line-on-ink);
     border-radius:4px; padding:11px 13px; color:var(--paper); font-family:var(--body); font-size:14.5px;
@@ -343,7 +339,7 @@
     <div>
       <div class="eyebrow">Kelowna &amp; Okanagan · BI &amp; Automation</div>
       <h1>Your business has <span class="accent">more data</span> than you think.</h1>
-      <p class="lede">ILM Analytics helps Okanagan retailers and manufacturers increase profitability through business intelligence, automation, and data-driven decision making — no data team required.</p>
+      <p class="lede">ILM Analytics helps Okanagan retailers and manufacturers increase profitability through business intelligence, automation, and data-driven decision making, no data team required.</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">Book your free assessment</a>
         <a href="#services" class="btn btn-ghost">See how it works</a>
@@ -361,7 +357,7 @@
       </div>
       <div class="dash-chart">
         <svg viewBox="0 0 300 100" preserveAspectRatio="none">
-          <polyline class="chart-fill" points="0,90 40,78 80,82 120,60 160,64 200,40 240,44 300,18 300,100 0,100" fill="rgba(31,111,92,0.25)"/>
+          <polyline class="chart-fill" points="0,90 40,78 80,82 120,60 160,64 200,40 240,44 300,18 300,100 0,100" fill="rgba(29,95,214,0.20)"/>
           <polyline class="chart-line" points="0,90 40,78 80,82 120,60 160,64 200,40 240,44 300,18" />
         </svg>
       </div>
@@ -374,7 +370,7 @@
     <div class="section-head">
       <div class="eyebrow on-paper">Common challenges</div>
       <h2>The way most SMBs run reporting today</h2>
-      <p>None of this is a people problem. It's a systems problem — and it's fixable in weeks, not quarters.</p>
+      <p>None of this is a people problem. It's a systems problem, and it's fixable in weeks, not quarters.</p>
     </div>
     <div class="ledger-labels"><span>Today</span><span>With ILM Analytics</span></div>
     <div class="ledger">
@@ -431,7 +427,7 @@
     <div class="section-head">
       <div class="eyebrow on-paper">What you actually get</div>
       <h2>An example dashboard, built around your numbers</h2>
-      <p>Every metric below updates on its own — no more Friday-afternoon spreadsheet exports.</p>
+      <p>Every metric below updates on its own, no more Friday-afternoon spreadsheet exports.</p>
     </div>
     <div class="bigdash">
       <div class="bigdash-grid">
@@ -459,7 +455,7 @@
     <div class="section-head">
       <div class="eyebrow">Example automation</div>
       <h2>What happens when a lead comes in</h2>
-      <p>No manual work required — from first contact to a booked appointment.</p>
+      <p>No manual work required, from first contact to a booked appointment.</p>
     </div>
     <div class="flow">
       <div class="flow-step"><span class="fnum">01</span>Lead arrives online</div>
@@ -513,13 +509,12 @@
     <div class="section-head">
       <div class="eyebrow on-paper">Investment</div>
       <h2>Straightforward packages</h2>
-      <p>Every engagement starts with a free assessment, so you know the scope before you commit.</p>
+      <p>Pricing is tailored to your situation, starting at $499 CAD. Every engagement starts with a free assessment, so you know the scope before you commit.</p>
     </div>
     <div class="pricing">
       <div class="price-card">
         <h3>Starter</h3>
         <div class="scope">Dashboard Setup</div>
-        <div class="price">$499<span>+</span></div>
         <ul>
           <li>KPI dashboard build</li>
           <li>Connected to your existing data</li>
@@ -530,7 +525,6 @@
       <div class="price-card featured">
         <h3>Growth</h3>
         <div class="scope">Dashboard + Automation</div>
-        <div class="price">$999<span>+</span></div>
         <ul>
           <li>Everything in Starter</li>
           <li>Lead &amp; follow-up automation</li>
@@ -541,7 +535,6 @@
       <div class="price-card">
         <h3>Enterprise</h3>
         <div class="scope">Custom Solutions</div>
-        <div class="price">Custom</div>
         <ul>
           <li>Multi-location or multi-system setups</li>
           <li>Forecasting &amp; growth systems</li>
@@ -574,14 +567,14 @@
     <div>
       <div class="eyebrow">Next steps</div>
       <h2>Book a complimentary assessment</h2>
-      <p class="lede">30 minutes. We'll identify hidden reporting and automation opportunities in your business — no obligation.</p>
+      <p class="lede">30 minutes. We'll identify hidden reporting and automation opportunities in your business, no obligation.</p>
       <ul class="contact-facts">
         <li>Serving Kelowna &amp; the Okanagan</li>
         <li>Response within 1 business day</li>
         <li>No cost, no obligation</li>
       </ul>
     </div>
-    <form id="assessmentForm">
+    <form id="assessmentForm" action="https://formspree.io/f/xrengdnp" method="POST">
       <div class="field-row">
         <div class="field">
           <label for="name">Name</label>
@@ -616,7 +609,6 @@
       </div>
       <button type="submit" class="btn btn-teal" style="width:100%; justify-content:center;">Request my free assessment</button>
       <div id="formStatus"></div>
-      <p class="form-note">This form isn't wired to a backend yet — see the setup notes to connect it in a few minutes.</p>
     </form>
   </div>
 </section>
@@ -631,9 +623,39 @@
 <script>
   document.getElementById('assessmentForm').addEventListener('submit', function(e){
     e.preventDefault();
+    var form = e.target;
     var status = document.getElementById('formStatus');
-    status.textContent = "Thanks — this demo form isn't connected yet. See deployment notes to wire it up (Formspree takes about 5 minutes).";
-    status.classList.add('show');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response){
+      if (response.ok) {
+        status.textContent = "Thanks, your request has been sent. We'll be in touch within 1 business day.";
+        status.classList.add('show');
+        form.reset();
+      } else {
+        response.json().then(function(data){
+          if (data && data.errors) {
+            status.textContent = "There was a problem sending your request. Please try again or email us directly.";
+          } else {
+            status.textContent = "There was a problem sending your request. Please try again or email us directly.";
+          }
+          status.classList.add('show');
+        });
+      }
+    }).catch(function(){
+      status.textContent = "There was a problem sending your request. Please check your connection and try again.";
+      status.classList.add('show');
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Request my free assessment";
+    });
   });
 </script>
 
